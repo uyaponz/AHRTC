@@ -1,0 +1,5 @@
+#Sun Sep 16 02:12:52 JST 2012
+jp.go.aist.rtm.nameserviceview.ui.dialog.NameServerSectionsDialog.combo.items=192.168.3.134\:2809,192.168.3.146\:9876,localhost\:2809,192.168.3.153\:9292,192.168.3.153\:9876,127.0.1.1\:9876,DT99-B01\:9876,192.168.3.142\:9876,192.168.3.152\:9876,192.168.3.152,localhost,127.0.0.1\:9876,localhost\:9876,192.168.3.161\:9876
+jp.go.aist.rtm.nameserviceview.ui.dialog.NameServerSectionsDialog.combo.selectIndex=12
+eclipse.preferences.version=1
+ui.views.NameServiceView.lastNameServiceAddress=localhost\:9876

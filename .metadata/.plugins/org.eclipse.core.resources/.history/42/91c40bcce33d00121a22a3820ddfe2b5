@@ -1,0 +1,75 @@
+#include "Calibration.hpp"
+
+#include <string>
+#include <cstdio>
+#include <opencv2/opencv.hpp>
+
+using namespace std;
+
+
+Calibration::Calibration(string pathCalibData, int referenceN) :
+    isReady_(false),
+    refPoint_(),
+    samPoint_(),
+    KX1_(0.0), KX2_(0.0), KX3_(0.0), KY1_(0.0), KY2_(0.0), KY3_(0.0),
+    N_(referenceN)
+{
+    if (loadCalibData(pathCalibData)) {
+        isReady_ = true;
+        calcCalibCoefficient();
+    }
+}
+
+
+Calibration::~Calibration()
+{
+}
+
+
+int Calibration::loadCalibData(string filename)
+{
+    FILE *fp = fopen(filename.c_str(), "r");
+    if (NULL == fp) {
+        std::cerr << "cannt open file: " << filename << std::endl;
+        return 0;
+    }
+
+    double refX, refY;
+    double samX, samY;
+    for (int i=0; i<N_; i++) {
+        if (EOF == fscanf(fp, "%lf %lf %lf %lf", &refX, &refY, &samX, &samY)) {
+            fclose(fp);
+            std::cerr << "unknown file format." << std::endl;
+            return 0;
+        }
+
+        refPoint_[i][0] = refX;
+        refPoint_[i][1] = refY;
+        samPoint_[i][0] = samX;
+        samPoint_[i][1] = samY;
+    }
+
+    fclose(fp);
+
+    return 1;
+}
+
+
+void Calibration::calcCalibCoefficient()
+{
+}
+
+
+CvPoint2D64f Calibration::getCalibPos(double x, double y)
+{
+    CvPoint2D64f retval;
+
+    retval.x = (KX1_*x + KX2_*y + KX3 + 0.5);
+    retval.y = (KY1_*x + KY2_*y + KY3 + 0.5);
+
+    return retval;
+}
+CvPoint2D64f Calibration::getCalibPos(CvPoint2D64f pos)
+{
+    return getCalibPos(pos.x, pos.y);
+}

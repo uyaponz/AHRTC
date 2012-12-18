@@ -1,0 +1,41 @@
+// -*- C++ -*-
+/*!
+ *
+ * THIS FILE IS GENERATED AUTOMATICALLY!! DO NOT EDIT!!
+ *
+ * @file AHCommonDataServiceSkel.h 
+ * @brief AHCommonDataService server skeleton header wrapper code
+ * @date Wed Nov 21 00:23:41 2012 
+ *
+ */
+
+#ifndef AHCOMMONDATASERVICESKEL_H
+#define AHCOMMONDATASERVICESKEL_H
+
+
+
+#include <rtm/config_rtc.h>
+#undef PACKAGE_BUGREPORT
+#undef PACKAGE_NAME
+#undef PACKAGE_STRING
+#undef PACKAGE_TARNAME
+#undef PACKAGE_VERSION
+
+#if   defined ORB_IS_TAO
+#  include "AHCommonDataServiceC.h"
+#  include "AHCommonDataServiceS.h"
+#elif defined ORB_IS_OMNIORB
+#  if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+#    undef USE_stub_in_nt_dll
+#  endif
+#  include "AHCommonDataService.hh"
+#elif defined ORB_IS_MICO
+#  include "AHCommonDataService.h"
+#elif defined ORB_IS_ORBIT2
+#  include "/AHCommonDataService-cpp-stubs.h"
+#  include "/AHCommonDataService-cpp-skels.h"
+#else
+#  error "NO ORB defined"
+#endif
+
+#endif // AHCOMMONDATASERVICESKEL_H

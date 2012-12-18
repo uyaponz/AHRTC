@@ -1,0 +1,30 @@
+// -*- C++ -*-
+/*!
+ *
+ * THIS FILE IS GENERATED AUTOMATICALLY!! DO NOT EDIT!!
+ *
+ * @file AHCommonDataServiceSkel.cpp 
+ * @brief AHCommonDataService server skeleton wrapper
+ * @date Wed Nov 21 00:23:41 2012 
+ *
+ */
+
+#include "AHCommonDataServiceSkel.h"
+
+#if defined ORB_IS_TAO
+#  include "AHCommonDataServiceC.cpp"
+#  include "AHCommonDataServiceS.cpp"
+#elif defined ORB_IS_OMNIORB
+#  include "AHCommonDataServiceSK.cc"
+#  include "AHCommonDataServiceDynSK.cc"
+#elif defined ORB_IS_MICO
+#  include "AHCommonDataService.cc"
+#  include "AHCommonDataService_skel.cc"
+#elif defined ORB_IS_ORBIT2
+#  include "AHCommonDataService-cpp-stubs.cc"
+#  include "AHCommonDataService-cpp-skels.cc"
+#else
+#  error "NO ORB defined"
+#endif
+
+// end of AHCommonDataServiceSkel.cpp

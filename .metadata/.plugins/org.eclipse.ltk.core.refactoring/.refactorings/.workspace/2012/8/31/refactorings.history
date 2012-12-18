@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="15 個のリソースを削除" deleteContents="false" description="15 個のリソースを削除" element1="/AHAttack2Comp" element10="/MalletTrackerComp" element11="/MovingPuckViewerComp" element12="/PredPuckVelPosComp" element13="/PuckTrackerComp" element14="/PuckTrackerConvComp" element15="/ServicePortTestComp" element2="/AHAttackComp" element3="/AHLoggerComp" element4="/AHLogPlayerComp" element5="/AHViewerComp" element6="/CalcPuckVelPosComp" element7="/HockeyArmComp" element8="/HockeyArmFKComp" element9="/HockeyArmIKComp" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="15" stamp="1344032645931"/>
+</session>

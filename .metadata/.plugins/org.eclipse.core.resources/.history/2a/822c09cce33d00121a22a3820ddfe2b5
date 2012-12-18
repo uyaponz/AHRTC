@@ -1,0 +1,32 @@
+#ifndef IGTAG_CALIBRATION_HPP
+#define IGTAG_CALIBRATION_HPP
+
+#include <string>
+#include <boost/noncopyable.hpp>
+#include <opencv2/opencv.hpp>
+
+
+class Calibration : private boost::noncopyable
+{
+private:
+    bool   isReady_;
+    double refPoint_[N][2];                    // ideal position of reference points
+    double samPoint_[N][2];                    // sampling position of reference points
+    double KX1_, KX2_, KX3_, KY1_, KY2_, KY3_; // coefficients for calibration algorithm
+public:
+    const int N_; // number of reference points for calibration algorithm
+
+private:
+    int  loadCalibData(std::string filename);
+    void calcCalibCoefficient();
+public:
+    CvPoint2D64f getCalibPos(double x, double y);
+    CvPoint2D64f getCalibPos(CvPoint2D64f pos);
+
+public:
+    Calibration(std::string pathCalibData, int referenceN);
+    ~Calibration();
+};
+
+
+#endif // IGTAG_CALIBRATION_HPP

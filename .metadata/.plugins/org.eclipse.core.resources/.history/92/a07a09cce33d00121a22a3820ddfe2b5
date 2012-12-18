@@ -1,0 +1,12 @@
+#ifndef IGTAG_CALIB_HPP
+#define IGTAG_CALIB_HPP
+
+#include <string>
+
+const int g_referenceN = 9*5; // number of reference points for calibration algorithm
+
+int  loadCalibrationData(std::string filename);
+int  getCalibrationCoefficient();
+void doCalibration(double &Px, double &Py);
+
+#endif // IGTAG_CALIB_HPP

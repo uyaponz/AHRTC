@@ -1,0 +1,185 @@
+// -*- C++ -*-
+/*!
+ * @file  MalletTracker.cpp
+ * @brief ${rtcParam.description}
+ * @date $Date$
+ *
+ * $Id$
+ */
+
+#include "MalletTracker.h"
+
+#include "Calib.hpp"
+
+// Module specification
+// <rtc-template block="module_spec">
+static const char* mallettracker_spec[] =
+{
+    "implementation_id", "MalletTracker",
+    "type_name",         "MalletTracker",
+    "description",       "${rtcParam.description}",
+    "version",           "1.0.0",
+    "vendor",            "ysatoh",
+    "category",          "Category",
+    "activity_type",     "PERIODIC",
+    "kind",              "DataFlowComponent",
+    "max_instance",      "1",
+    "language",          "C++",
+    "lang_type",         "compile",
+    // Configuration variables
+    "conf.default.MalletCalibDataPath", "./data/MalletCalibData.dat",
+    // Widget
+    "conf.__widget__.MalletCalibDataPath", "text",
+    // Constraints
+    ""
+};
+// </rtc-template>
+
+/*!
+ * @brief constructor
+ * @param manager Maneger Object
+ */
+MalletTracker::MalletTracker(RTC::Manager* manager)
+    // <rtc-template block="initializer">
+    : RTC::DataFlowComponentBase(manager),
+      m_malletXY_outOut("MalletXY_out", m_malletXY_out),
+      m_AHCommonDataServicePort("AHCommonDataService")
+
+      // </rtc-template>
+{
+}
+
+/*!
+ * @brief destructor
+ */
+MalletTracker::~MalletTracker()
+{
+}
+
+
+
+RTC::ReturnCode_t MalletTracker::onInitialize()
+{
+    // Registration: InPort/OutPort/Service
+    // <rtc-template block="registration">
+    // Set InPort buffers
+
+    // Set OutPort buffer
+    addOutPort("MalletXY_out", m_malletXY_outOut);
+
+    // Set service provider to Ports
+
+    // Set service consumers to Ports
+    m_AHCommonDataServicePort.registerConsumer(
+        "AHCommonData", "AHCommon::AHCommonDataService", m_ahCommonData);
+
+    // Set CORBA Service Ports
+    addPort(m_AHCommonDataServicePort);
+
+    // </rtc-template>
+
+    // <rtc-template block="bind_config">
+    // Bind variables and configuration variable
+    bindParameter("MalletCalibDataPath",
+                  m_malletCalibDataPath,
+                  "./data/MalletCalibData.dat");
+
+    // </rtc-template>
+
+    m_malletXY_out.data.length(2);
+    m_malletXY_out.data[0] = m_malletXY_out.data[1] = 0.0;
+    m_malletXY_outOut.write();
+
+    srand(static_cast<unsigned>(time(NULL)));
+
+    return RTC::RTC_OK;
+}
+
+/*
+  RTC::ReturnCode_t MalletTracker::onFinalize()
+  {
+  return RTC::RTC_OK;
+  }
+*/
+
+/*
+  RTC::ReturnCode_t MalletTracker::onStartup(RTC::UniqueId ec_id)
+  {
+  return RTC::RTC_OK;
+  }
+*/
+
+/*
+  RTC::ReturnCode_t MalletTracker::onShutdown(RTC::UniqueId ec_id)
+  {
+  return RTC::RTC_OK;
+  }
+*/
+
+
+RTC::ReturnCode_t MalletTracker::onActivated(RTC::UniqueId ec_id)
+{
+    return RTC::RTC_OK;
+}
+
+
+RTC::ReturnCode_t MalletTracker::onDeactivated(RTC::UniqueId ec_id)
+{
+    return RTC::RTC_OK;
+}
+
+
+RTC::ReturnCode_t MalletTracker::onExecute(RTC::UniqueId ec_id)
+{
+    return RTC::RTC_OK;
+}
+
+/*
+  RTC::ReturnCode_t MalletTracker::onAborting(RTC::UniqueId ec_id)
+  {
+  return RTC::RTC_OK;
+  }
+*/
+
+/*
+  RTC::ReturnCode_t MalletTracker::onError(RTC::UniqueId ec_id)
+  {
+  return RTC::RTC_OK;
+  }
+*/
+
+/*
+  RTC::ReturnCode_t MalletTracker::onReset(RTC::UniqueId ec_id)
+  {
+  return RTC::RTC_OK;
+  }
+*/
+
+/*
+  RTC::ReturnCode_t MalletTracker::onStateUpdate(RTC::UniqueId ec_id)
+  {
+  return RTC::RTC_OK;
+  }
+*/
+
+/*
+  RTC::ReturnCode_t MalletTracker::onRateChanged(RTC::UniqueId ec_id)
+  {
+  return RTC::RTC_OK;
+  }
+*/
+
+
+
+extern "C"
+{
+
+    void MalletTrackerInit(RTC::Manager* manager)
+    {
+        coil::Properties profile(mallettracker_spec);
+        manager->registerFactory(profile,
+                                 RTC::Create<MalletTracker>,
+                                 RTC::Delete<MalletTracker>);
+    }
+
+};

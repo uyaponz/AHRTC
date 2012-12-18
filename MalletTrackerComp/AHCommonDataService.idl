@@ -1,0 +1,8 @@
+/* AHCommonDataService.idl */
+
+module AHCommon
+{
+    interface AHCommonDataService {
+        boolean getData(in string dataname, out string data);
+    };
+};

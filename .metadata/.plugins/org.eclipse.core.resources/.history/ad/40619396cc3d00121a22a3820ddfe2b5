@@ -1,0 +1,4 @@
+exec_cxt.periodic.rate: 50.0
+corba.nameservers: localhost:9876
+naming.formats: %h.AirHockey/%n.rtc
+

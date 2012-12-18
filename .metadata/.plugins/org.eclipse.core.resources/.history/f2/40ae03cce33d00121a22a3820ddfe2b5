@@ -1,0 +1,27 @@
+// -*- C++ -*-
+/*!
+ *
+ * THIS FILE IS GENERATED AUTOMATICALLY!! DO NOT EDIT!!
+ *
+ * @file AHCommonDataServiceStub.cpp 
+ * @brief AHCommonDataService client stub wrapper code
+ * @date Wed Nov 21 00:23:41 2012 
+ *
+ */
+
+#include "AHCommonDataServiceStub.h"
+
+#if   defined ORB_IS_TAO
+#  include "AHCommonDataServiceC.cpp"
+#elif defined ORB_IS_OMNIORB
+#  include "AHCommonDataServiceSK.cc"
+#  include "AHCommonDataServiceDynSK.cc"
+#elif defined ORB_IS_MICO
+#  include "AHCommonDataService.cc"
+#elif defined ORB_IS_ORBIT2
+#  include "AHCommonDataService-cpp-stubs.cc"
+#else
+#  error "NO ORB defined"
+#endif
+
+// end of AHCommonDataServiceStub.cpp

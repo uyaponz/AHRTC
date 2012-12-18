@@ -1,0 +1,42 @@
+// -*-C++-*-
+/*!
+ * @file  AHCommonDataServiceSVC_impl.cpp
+ * @brief Service implementation code of AHCommonDataService.idl
+ *
+ */
+
+#include "AHCommonDataServiceSVC_impl.h"
+
+/*
+ * Example implementational code for IDL interface AHCommon::AHCommonDataService
+ */
+AHCommonDataServiceSVC_impl::AHCommonDataServiceSVC_impl()
+{
+  // Please add extra constructor code here.
+}
+
+
+AHCommonDataServiceSVC_impl::~AHCommonDataServiceSVC_impl()
+{
+  // Please add extra destructor code here.
+}
+
+
+/*
+ * Methods corresponding to IDL attributes and operations
+ */
+CORBA::Boolean AHCommonDataServiceSVC_impl::getData(const char* dataname, CORBA::String_out data)
+{
+  // Please insert your code here and remove the following warning pragma
+#ifndef WIN32
+  #warning "Code missing in function <CORBA::Boolean AHCommonDataServiceSVC_impl::getData(const char* dataname, CORBA::String_out data)>"
+#endif
+  return 0;
+}
+
+
+
+// End of example implementational code
+
+
+
